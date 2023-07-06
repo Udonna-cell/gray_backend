@@ -43,9 +43,9 @@ app.get('/add', (req, res)=>{
         con.query(sql, function (err, result) {
           if (err) throw err;
           console.log("1 record inserted");
+          res.send('1 record inserted')
         });
       });
-    res.send('Hello World!')
 })
 
 app.listen(port, () => {
