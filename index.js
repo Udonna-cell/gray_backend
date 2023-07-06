@@ -37,7 +37,10 @@ app.get('/', (req, res) => {
 
 app.get('/add', (req, res)=>{
     con.connect(function(err) {
-        if (err) throw err;
+        if (err) {
+          res.send('cannot add user')
+          throw err
+        };
         console.log("Connected!");
         var sql = "INSERT INTO users (id, email, password) VALUES (1, 'oray@gmail.com','dog676')";
         con.query(sql, function (err, result) {
