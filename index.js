@@ -5,10 +5,10 @@ const mysql = require('mysql');
 const url = require('url');
 
 const con = mysql.createConnection({
-  host: "sql108.infinityfree.com",
-  user: "if0_34564036",
-  password: "k3L4MlyXptqSk",
-  database: "if0_34564036_Users"
+  host: "db4free.net",
+  user: "stabug",
+  password: "456ma$SO",
+  database: "greydb"
 });
 
 
