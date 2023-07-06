@@ -26,27 +26,45 @@ const con = mysql.createConnection({
 });
 
 
-
-
-
-
-
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
 app.get('/add', (req, res)=>{
+    res.setHeader('Content-Type', 'application/json');
+
+    let q = url.parse(req.url, true).query;
+    let email = q.email;
+    let password =  q.password;
+    
     con.connect(function(err) {
-        if (err) {
-          res.send('cannot add user')
-          throw err
-        };
+        if (err) throw err;
         console.log("Connected!");
-        var sql = "INSERT INTO users (id, email, password) VALUES (1, 'oray@gmail.com','dog676')";
+
+        let sql = `INSERT INTO user (email, password) VALUES ('${email}','${password}')`;
+
         con.query(sql, function (err, result) {
           if (err) throw err;
           console.log("1 record inserted");
-          res.send('1 record inserted')
+          res.end(JSON.stringify({ email: email, password : password }));
+        });
+      });
+})
+
+
+app.get('/create_table', (req, res)=>{
+    con.connect(function(err) {
+        if (err) throw err;
+        console.log("Connected!");
+        let sql = `CREATE TABLE user (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            email VARCHAR(255),
+            password VARCHAR(255)
+        )`;
+        con.query(sql, function (err, result) {
+          if (err) throw err;
+          console.log("Table created!");
+          res.end(JSON.stringify({ b: 1 }));
         });
       });
 })
@@ -54,6 +72,3 @@ app.get('/add', (req, res)=>{
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
-
-
-
