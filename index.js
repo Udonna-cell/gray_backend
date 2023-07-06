@@ -2,27 +2,13 @@ const express = require('express')
 const app = express()
 const port = 3000
 const mysql = require('mysql');
+const url = require('url');
 
 const con = mysql.createConnection({
-//      MYSQL_URL
-// mysql://root:880vsQ3l9A1tGvy7lh3E@containers-us-west-146.railway.app:7820/railway
-//     MYSQLDATABASE
-//     *******
-//     MYSQLHOST
-//     *******
-//     MYSQLPASSWORD
-//     880vsQ3l9A1tGvy7lh3E
-//     MYSQLPORT
-//     7820
-//     MYSQLUSER
-//     root
-
-
-
-  host: "containers-us-west-146.railway.app",
-  user: "root",
-  password: "880vsQ3l9A1tGvy7lh3E",
-  database: "railway"
+  host: "sql108.infinityfree.com",
+  user: "if0_34564036",
+  password: "k3L4MlyXptqSk",
+  database: "if0_34564036_Users"
 });
 
 
