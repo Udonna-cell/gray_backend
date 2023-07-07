@@ -4,12 +4,6 @@ const port = 3000
 const mysql = require('mysql');
 const url = require('url');
 
-const con = mysql.createConnection({
-  host: "db4free.net",
-  user: "stabug",
-  password: "456ma$SO",
-  database: "greydb"
-});
 
 
 app.get('/', (req, res) => {
@@ -17,6 +11,12 @@ app.get('/', (req, res) => {
 })
 
 app.get('/add', (req, res)=>{
+  const con = mysql.createConnection({
+  host: "db4free.net",
+  user: "stabug",
+  password: "456ma$SO",
+  database: "greydb"
+});
     res.setHeader('Content-Type', 'application/json');
 
     let q = url.parse(req.url, true).query;
@@ -39,6 +39,13 @@ app.get('/add', (req, res)=>{
 
 
 app.get('/create_table', (req, res)=>{
+  const con = mysql.createConnection({
+  host: "db4free.net",
+  user: "stabug",
+  password: "456ma$SO",
+  database: "greydb"
+});
+
     con.connect(function(err) {
         if (err) throw err;
         console.log("Connected!");
